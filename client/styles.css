@@ -1,0 +1,127 @@
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f0f0f0;
+	margin: 0;
+	padding: 0;
+}
+
+#app {
+	background-color: #f0f0f0;
+	margin: 0 auto;
+	max-width: 100%; /* Take full width of the viewport */
+	padding: 10px; /* Add some padding for spacing */
+	box-sizing: border-box; /* Include padding in the width */
+}
+
+h1 {
+	text-align: center;
+}
+
+form {
+	max-width: 100%; /* Take full width of the viewport */
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #ffffff;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	border-radius: 4px; /* Add border-radius for a rounded look */
+	box-sizing: border-box; /* Include padding in the width */
+}
+
+h2 {
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+label {
+	display: block;
+	margin-top: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+	width: 100%; /* Take full width of the parent container */
+	padding: 10px;
+	margin-top: 5px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box; /* Include padding in the width */
+}
+
+input[type="number"] {
+	width: 100%; /* Take full width of the parent container */
+}
+
+button[type="submit"] {
+	display: block;
+	background-color: #007bff;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+	background-color: #0056b3;
+}
+
+/* Style for the navigation menu */
+nav {
+	background-color: #007bff; /* Background color for the navigation bar */
+	padding: 10px 0; /* Padding above and below the links */
+}
+
+/* Style for the navigation links */
+nav ul {
+	list-style: none; /* Remove bullet points from the list */
+	text-align: center; /* Center-align the links */
+	margin: 0; /* Remove default margin */
+	padding: 0; /* Remove default padding */
+}
+
+nav ul li {
+	display: block; /* Display list items as blocks for mobile */
+	margin: 0; /* Remove margin */
+	padding: 10px 0; /* Add vertical spacing between links */
+	text-align: center; /* Center-align the links */
+}
+
+nav a {
+	text-decoration: none; /* Remove underline from links */
+	color: #fff; /* Text color for links */
+	font-weight: bold; /* Bold font for links */
+}
+
+nav a:hover {
+	text-decoration: underline; /* Underline links on hover */
+}
+
+/* Style for the entry cards */
+.entry-card {
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+	margin: 20px;
+	padding: 15px;
+	max-width: 400px;
+}
+
+.entry-card h2 {
+	font-size: 1.2em;
+	margin-bottom: 10px;
+}
+
+.entry-card p {
+	font-size: 1em;
+	line-height: 1.4;
+}
+
+/* Add a hover effect */
+.entry-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}

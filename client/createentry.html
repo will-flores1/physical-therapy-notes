@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>My PT Journal Online</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<h1>My PT Journal Online</h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="createentry.html">Create Entry</a></li>
+				<li><a href="viewentries.html">View Entries</a></li>
+			</ul>
+		</nav>
+		<div id="app">
+			<!-- On click open form -->
+			<form action="/api/entries" method="POST">
+				<!-- Pain Section -->
+				<h2>Pain</h2>
+				<label for="painLevel">Pain Level (0-10):</label>
+				<input
+					type="number"
+					id="painLevel"
+					name="pain[level]"
+					min="0"
+					max="10" />
+
+				<label for="painDescription">Pain Description:</label>
+				<input type="text" id="painDescription" name="pain[description]" />
+
+				<label for="painTriggers">Pain Triggers:</label>
+				<input type="text" id="painTriggers" name="pain[triggers]" />
+
+				<!-- Range of Motion Section -->
+				<h2>Range of Motion</h2>
+				<label for="flexion">Flexion (degrees):</label>
+				<input type="number" id="flexion" name="rangeOfMotion[flexion]" />
+
+				<label for="extension">Extension (degrees):</label>
+				<input
+					type="number"
+					id="extension"
+					name="rangeOfMotion[extension]" />
+
+				<!-- Swelling Section -->
+				<h2>Swelling</h2>
+				<label for="swelling">Swelling Description:</label>
+				<textarea id="swelling" name="swelling" rows="4"></textarea>
+
+				<!-- Medications Section -->
+				<h2>Medications</h2>
+				<label for="medicationName">Medication Name:</label>
+				<input
+					type="text"
+					id="medicationName"
+					name="medications[0][name]" />
+
+				<label for="medicationDosage">Dosage:</label>
+				<input
+					type="text"
+					id="medicationDosage"
+					name="medications[0][dosage]" />
+
+				<label for="medicationFrequency">Frequency:</label>
+				<input
+					type="text"
+					id="medicationFrequency"
+					name="medications[0][frequency]" />
+
+				<!-- Physical Therapy Section -->
+				<h2>Physical Therapy</h2>
+				<label for="exerciseName">Exercise Name:</label>
+				<input
+					type="text"
+					id="exerciseName"
+					name="physicalTherapy[0][exercise]" />
+
+				<label for="exerciseSets">Sets:</label>
+				<input
+					type="number"
+					id="exerciseSets"
+					name="physicalTherapy[0][sets]" />
+
+				<label for="exerciseRepetitions">Repetitions:</label>
+				<input
+					type="number"
+					id="exerciseRepetitions"
+					name="physicalTherapy[0][repetitions]" />
+
+				<label for="exerciseModifications">Modifications:</label>
+				<textarea
+					id="exerciseModifications"
+					name="physicalTherapy[0][modifications]"
+					rows="4"></textarea>
+
+				<!-- Challenges and Achievements Section -->
+				<h2>Challenges and Achievements</h2>
+				<label for="challengesAndAchievements"
+					>Describe Challenges and Achievements:</label
+				>
+				<textarea
+					id="challengesAndAchievements"
+					name="challengesAndAchievements"
+					rows="4"></textarea>
+
+				<!-- Questions and Concerns Section -->
+				<h2>Questions and Concerns</h2>
+				<label for="questionsAndConcerns">Questions and Concerns:</label>
+				<textarea
+					id="questionsAndConcerns"
+					name="questionsAndConcerns"
+					rows="4"></textarea>
+
+				<!-- Diet and Nutrition Section -->
+				<h2>Diet and Nutrition</h2>
+				<label for="dietAndNutrition"
+					>Diet and Nutrition Information:</label
+				>
+				<textarea
+					id="dietAndNutrition"
+					name="dietAndNutrition"
+					rows="4"></textarea>
+
+				<!-- Sleep and Rest Section -->
+				<h2>Sleep and Rest</h2>
+				<label for="sleepAndRest">Sleep and Rest Information:</label>
+				<textarea id="sleepAndRest" name="sleepAndRest" rows="4"></textarea>
+
+				<!-- Emotional Well-being Section -->
+				<h2>Emotional Well-being</h2>
+				<label for="emotionalWellBeing"
+					>Emotional Well-being Information:</label
+				>
+				<textarea
+					id="emotionalWellBeing"
+					name="emotionalWellBeing"
+					rows="4"></textarea>
+
+				<!-- Future Goals Section -->
+				<h2>Future Goals</h2>
+				<label for="futureGoals">Future Goals:</label>
+				<textarea id="futureGoals" name="futureGoals" rows="4"></textarea>
+
+				<!-- Follow-Up Appointments Section -->
+				<h2>Follow-Up Appointments</h2>
+				<label for="followUpAppointments"
+					>Follow-Up Appointments Date:</label
+				>
+				<input
+					type="date"
+					id="followUpAppointments"
+					name="followUpAppointments" />
+
+				<!-- Submit Button -->
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+	</body>
+</html>
