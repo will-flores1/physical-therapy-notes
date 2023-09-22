@@ -17,7 +17,7 @@
 		</nav>
 		<div id="app">
 			<!-- On click open form -->
-			<form action="/api/entries" method="POST">
+			<form id="entry-form" action="/api/entries" method="POST">
 				<!-- Pain Section -->
 				<h2>Pain</h2>
 				<label for="painLevel">Pain Level (0-10):</label>
@@ -26,29 +26,47 @@
 					id="painLevel"
 					name="pain[level]"
 					min="0"
-					max="10" />
+					max="10"
+					value="4" />
 
 				<label for="painDescription">Pain Description:</label>
-				<input type="text" id="painDescription" name="pain[description]" />
+				<input
+					type="text"
+					id="painDescription"
+					name="pain[description]"
+					value="stiff" />
 
 				<label for="painTriggers">Pain Triggers:</label>
-				<input type="text" id="painTriggers" name="pain[triggers]" />
+				<input
+					type="text"
+					id="painTriggers"
+					name="pain[triggers]"
+					value="exercising" />
 
 				<!-- Range of Motion Section -->
 				<h2>Range of Motion</h2>
 				<label for="flexion">Flexion (degrees):</label>
-				<input type="number" id="flexion" name="rangeOfMotion[flexion]" />
+				<input
+					type="number"
+					id="flexion"
+					name="rangeOfMotion[flexion]"
+					value="136" />
 
 				<label for="extension">Extension (degrees):</label>
 				<input
 					type="number"
 					id="extension"
-					name="rangeOfMotion[extension]" />
+					name="rangeOfMotion[extension]"
+					value="0" />
 
 				<!-- Swelling Section -->
 				<h2>Swelling</h2>
 				<label for="swelling">Swelling Description:</label>
-				<textarea id="swelling" name="swelling" rows="4"></textarea>
+				<textarea
+					id="swelling"
+					name="swelling"
+					rows="4"
+					value="moderate"></textarea>
 
 				<!-- Medications Section -->
 				<h2>Medications</h2>
@@ -56,19 +74,22 @@
 				<input
 					type="text"
 					id="medicationName"
-					name="medications[0][name]" />
+					name="medications[0][name]"
+					value="none" />
 
 				<label for="medicationDosage">Dosage:</label>
 				<input
 					type="text"
 					id="medicationDosage"
-					name="medications[0][dosage]" />
+					name="medications[0][dosage]"
+					value="none" />
 
 				<label for="medicationFrequency">Frequency:</label>
 				<input
 					type="text"
 					id="medicationFrequency"
-					name="medications[0][frequency]" />
+					name="medications[0][frequency]"
+					value="none" />
 
 				<!-- Physical Therapy Section -->
 				<h2>Physical Therapy</h2>
@@ -76,19 +97,22 @@
 				<input
 					type="text"
 					id="exerciseName"
-					name="physicalTherapy[0][exercise]" />
+					name="physicalTherapy[0][exercise]"
+					value="One leg squat" />
 
 				<label for="exerciseSets">Sets:</label>
 				<input
 					type="number"
 					id="exerciseSets"
-					name="physicalTherapy[0][sets]" />
+					name="physicalTherapy[0][sets]"
+					value="3" />
 
 				<label for="exerciseRepetitions">Repetitions:</label>
 				<input
 					type="number"
 					id="exerciseRepetitions"
-					name="physicalTherapy[0][repetitions]" />
+					name="physicalTherapy[0][repetitions]"
+					value="10" />
 
 				<label for="exerciseModifications">Modifications:</label>
 				<textarea
@@ -158,5 +182,78 @@
 				<button type="submit">Submit</button>
 			</form>
 		</div>
+
+		<script async>
+			document
+				.getElementById("entry-form")
+				.addEventListener("submit", async function (event) {
+					event.preventDefault();
+
+					const formData = new FormData(event.target);
+
+					// Create an object that matches the MongoDB schema structure
+					const entryData = {
+						pain: {
+							level: formData.get("pain[level]"),
+							description: formData.get("pain[description]"),
+							triggers: formData.get("pain[triggers]"),
+						},
+						rangeOfMotion: {
+							flexion: formData.get("rangeOfMotion[flexion]"),
+							extension: formData.get("rangeOfMotion[extension]"),
+						},
+						swelling: formData.get("swelling"),
+						medications: [
+							{
+								name: formData.get("medications[0][name]"),
+								dosage: formData.get("medications[0][dosage]"),
+								frequency: formData.get("medications[0][frequency]"),
+							},
+						],
+						physicalTherapy: [
+							{
+								exercise: formData.get("physicalTherapy[0][exercise]"),
+								sets: formData.get("physicalTherapy[0][sets]"),
+								repetitions: formData.get(
+									"physicalTherapy[0][repetitions]"
+								),
+								modifications: formData.get(
+									"physicalTherapy[0][modifications]"
+								),
+							},
+						],
+						challengesAndAchievements: formData.get(
+							"challengesAndAchievements"
+						),
+						questionsAndConcerns: formData.get("questionsAndConcerns"),
+						dietAndNutrition: formData.get("dietAndNutrition"),
+						sleepAndRest: formData.get("sleepAndRest"),
+						emotionalWellBeing: formData.get("emotionalWellBeing"),
+						futureGoals: formData.get("futureGoals"),
+						followUpAppointments: formData.get("followUpAppointments"),
+					};
+
+					// Log the structured data to the console
+					console.log("Structured Data:", entryData);
+
+					// Now you can send this structured data to your MongoDB server
+					// using a POST request to the /api/entries endpoint
+					try {
+						const response = await fetch("/api/entries", {
+							method: "POST",
+							headers: {
+								"Content-Type": "application/json",
+							},
+							body: JSON.stringify(entryData),
+						});
+
+						const data = await response.json();
+
+						console.log("Success:", data);
+					} catch (error) {
+						console.error("Error:", error);
+					}
+				});
+		</script>
 	</body>
 </html>
